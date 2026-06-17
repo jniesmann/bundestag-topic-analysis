@@ -8,9 +8,9 @@ API_URL = "https://search.dip.bundestag.de/api/v1/plenarprotokoll"
 API_KEY = os.getenv("BUNDESTAG_API_KEY")
 RAW_DATA_DIR = "data/raw"
 
-def request_api(year=2024):
+def request_api():
     """
-    Sendet eine GET-Anfrage an die API des Bundestags, um Plenarprotokolle im JSON-Format für das Jahr 2024 abzurufen.
+    Sendet eine GET-Anfrage an die API des Bundestags, um Plenarprotokolle im JSON-Format abzurufen.
 
     Returns:
         dict: Die JSON-Antwort als dict.
@@ -23,8 +23,8 @@ def request_api(year=2024):
         "apikey": API_KEY,
         "f.dokumentart": "plenarprotokoll",
         "f.herausgeber": "BT",
-        "f.datum.start": f"{year}-01-01",
-        "f.datum.end": f"{year}-12-31"
+        "f.datum.start": f"2024-01-01",
+        "f.datum.end": f"2025-12-31"
     })
 
     response.raise_for_status()
@@ -49,12 +49,12 @@ def scrape_xml(xml_url):
     with open(full_path, 'w', encoding='utf-8') as output:
         output.write(xml.text)
 
-def load_data(year=2024):
+def load_data():
     """
-    Lädt alle Plenarprotokolle des Jahres 2024 vom Bundestag herunter
+    Lädt alle Plenarprotokolle des Jahres 2024/25 vom Bundestag herunter
     und gespeichert die zugehörigen XML-Dateien.
     """
-    docs = request_api(year=year).get('documents', [])
+    docs = request_api().get('documents', [])
 
     print(f"Lade {len(docs)} Plenardebatten herunter...")
     for doc in docs:

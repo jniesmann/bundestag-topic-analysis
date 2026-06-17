@@ -14,15 +14,13 @@ def main_analysis():
                         help="Überspringt das Herunterladen der XML-Dateien")
     parser.add_argument("--min_words", type=int, default=100,
                         help="Mindestanzahl an Wörter einer Rede für Topic-Model")
-    parser.add_argument("--year", type=int, default=None,
-                        help="Jahr der zu downloadenen Plenarreden")
     parser.add_argument("--skip-processing", action="store_true",
                         help="Überspringt alle Verarbeitungsschritte")
 
     args = parser.parse_args()
 
     if not args.skip_download:
-        data_loader.load_data(args.year)
+        data_loader.load_data()
 
     if not args.skip_processing:
         print("=" * 60)
