@@ -78,7 +78,6 @@ bundestag-topic-analysis/
 │   ├── xml_parser.py           # Extraktion der Redebeiträge aus XML
 │   ├── text_preprocessing.py   # spaCy-Vorverarbeitung & Lemmatisierung
 │   ├── topic_modeling.py       # BERTopic-Modellierung
-│   └── topic_labels.py         # Manuelle Themenzuordnung
 │
 ├── data/
 │   ├── raw/
@@ -87,8 +86,10 @@ bundestag-topic-analysis/
 ├── dashboard.py                # Streamlit Dashboard
 ├── main.py                     # Ausführung der Datenpipeline
 ├── Dockerfile
-├── compose.yaml
+├── docker-compose.yaml
 ├── requirements.txt
+├── requirements-dashboard.txt
+├── .dockerignore
 ├── .gitignore
 └── README.md
 ```

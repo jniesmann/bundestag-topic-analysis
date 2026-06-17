@@ -1,0 +1,13 @@
+services:
+  dashboard:
+    build: .
+
+    container_name: bt-dash
+
+    ports:
+      - "8501:8501"
+
+    volumes:
+      - ./data:/app/data
+
+    restart: unless-stopped
