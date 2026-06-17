@@ -19,6 +19,18 @@ Für jedes identifizierte Thema werden dargestellt:
 - Fraktionsspezifische Themenschwerpunkte
 - Repräsentative Beispielreden
 
+### Themenübersicht
+
+![Dashboard Overview](screenshots/dashboard_overview.png)
+
+### Beispiel: WordCloud aller Reden zum Thema Migration & Asylpolitik
+
+![Migration Topic](screenshots/migration_topic.png)
+
+### Beispiel: Plenardebatten zum Thema Schwangerschaftsabbruch im Zeitverlauf
+
+![Ukraine Topic](screenshots/sa_topic.png)
+
 ## Datenquelle
 
 Die Daten stammen aus den öffentlich verfügbaren XML-Protokollen des Deutschen Bundestages:
