@@ -113,7 +113,7 @@ http://localhost:8501
 Das Dashboard kann ohne vorherige Ausführung der Datenpipeline gestartet werden, da alle für die Visualisierung benötigten Dateien bereits im Repository enthalten sind.
 
 ```bash
-pip install -r requirements-dashboard.py
+pip install -r requirements-dashboard.txt
 streamlit run dashboard.py
 ```
 
@@ -125,7 +125,7 @@ Die Datenpipeline umfasst den Download der Bundestagsprotokolle, die Vorverarbei
 #### Vollständige Pipeline
 
 ```bash
-pip install -r requirements.py
+pip install -r requirements.txt
 python main.py
 ```
 
@@ -133,7 +133,7 @@ Für den Download der Bundestagsdaten wird eine `.env`-Datei verwendet.
 Beispiel:
 
 ```env
-API_KEY=key
+API_KEY="key"
 ```
 
 Der aktuelle API-Key kann unter https://dip.bundestag.de/%C3%BCber-dip/hilfe/api eingesehen werden.
