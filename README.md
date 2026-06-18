@@ -45,14 +45,14 @@ Berücksichtigt wurden Plenardebatten der Jahre 2024 und 2025.
 
 - Download der XML-Protokolle
 - Extraktion einzelner Redebeiträge
-- Erfassung von Sprecherinformationen, Fraktion und Datum
+- Erfassung von Sprecherinformationen und Metadaten
 
 ### 2. Textvorverarbeitung
 
 - spaCy (`de_core_news_sm`)
 - Lemmatisierung
 - Entfernung deutscher Stopwörter
-- Entfernung bundestagsspezifischer Stopwörter
+- Entfernung bundestagsspezifischer Stopwörter (`data/custom_parliament_stopwords.txt`)
 
 ### 3. Topic Modeling
 
@@ -65,8 +65,6 @@ Berücksichtigt wurden Plenardebatten der Jahre 2024 und 2025.
 - Streamlit
 - Matplotlib
 - WordCloud
-
-## Projektstruktur
 
 ## Projektstruktur
 
@@ -94,24 +92,40 @@ bundestag-topic-analysis/
 └── README.md
 ```
 
+
+## Docker
+
+Das Dashboard kann containerisiert betrieben werden:
+
+```bash
+docker compose up -d --build
+```
+
+Anschließend ist das Dashboard unter folgendem Endpunkt erreichbar:
+
+http://localhost:8501
+
 ## Lokale Ausführung
+
 
 ### Dashboard
 
 Das Dashboard kann ohne vorherige Ausführung der Datenpipeline gestartet werden, da alle für die Visualisierung benötigten Dateien bereits im Repository enthalten sind.
 
 ```bash
+pip install -r requirements-dashboard.py
 streamlit run dashboard.py
 ```
 
 ### Pipeline zum Datapreprocessing
 
 Die Datenpipeline umfasst den Download der Bundestagsprotokolle, die Vorverarbeitung der Redebeiträge sowie das Topic Modeling mittels BERTopic. Sie kann über `main.py` ausgeführt werden.
-Da BERTopic auf stochastischen Komponenten basiert, können bei einer erneuten Ausführung geringfügige Abweichungen in den resultierenden Themenclustern und deren Zuordnung auftreten.
+**Hinweis:** Da BERTopic auf stochastischen Komponenten basiert, können bei einer erneuten Ausführung geringfügige Abweichungen in den resultierenden Themenclustern und deren Zuordnung auftreten.
 
 #### Vollständige Pipeline
 
 ```bash
+pip install -r requirements.py
 python main.py
 ```
 
@@ -120,6 +134,7 @@ Beispiel:
 
 ```env
 API_KEY=key
+```
 
 Der aktuelle API-Key kann unter https://dip.bundestag.de/%C3%BCber-dip/hilfe/api eingesehen werden.
 
@@ -134,29 +149,6 @@ python main.py --skip-download
 ```bash
 python main.py --skip-processing
 ```
-
-
-## Docker
-
-Das Dashboard kann containerisiert betrieben werden:
-
-```bash
-docker compose up -d --build
-```
-
-Anschließend ist das Dashboard unter folgendem Endpunkt erreichbar:
-
-http://localhost:8501
-
-## Verwendete Technologien
-
-- Python
-- pandas
-- spaCy
-- BERTopic
-- SentenceTransformers
-- Streamlit
-- Docker / Podman
 
 ## Autor
 
